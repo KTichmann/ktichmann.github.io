@@ -1,37 +1,34 @@
-import { Link } from "gatsby"
 import React from "react"
+import Fade from "react-reveal/Fade"
+import data from "../yourdata"
 
-const Footer = ({ styles }) => {
+const Footer = () => {
   return (
-    <footer className="flex flex-column flex-md-row" style={{ ...styles }}>
-      <ul className="mb-5">
-        <li className="bold">Visit Another Page</li>
-        <li>
-          <Link to="/payment-solution">Payment Solution</Link>
-        </li>
-        <li>
-          <Link to="/travel">Travel</Link>
-        </li>
-        <li>
-          <Link to="/clonepen">Clonepen</Link>
-        </li>
-        <li>
-          <Link to="/landing-page">Landing Page</Link>
-        </li>
-      </ul>
-      <ul className="mb-5">
-        <li className="bold">View My Portfolio</li>
-        <li className="bold">Home</li>
-        <li className="bold">Projects</li>
-        <li className="bold">About</li>
-      </ul>
-      <ul>
-        <li className="bold">Contact Me</li>
-        <li>Contact Page</li>
-        <li>Email: ktichmann@gmail.com</li>
-        <li>LinkedIn</li>
-      </ul>
-    </footer>
+    <div className="section" id="contact">
+      <div className="container">
+        <div className="footer-container">
+          <Fade bottom cascade>
+            <h1>Contact</h1>
+            <h2>{data.contactSubHeading}</h2>
+          </Fade>
+          <a className="email-link" href={`mailto:${data.contactEmail}`}>
+            {data.contactEmail}
+          </a>
+          <div className="social-icons">
+            {data.social.map((socialLink, index) => (
+              <a
+                key={index}
+                href={socialLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={socialLink.img} alt="icons"></img>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

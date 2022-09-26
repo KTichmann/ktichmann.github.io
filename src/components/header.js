@@ -1,29 +1,55 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
-import PaymentHeader from "./paymentHeader"
-import TravelHeader from "./travelHeader"
+import Fade from "react-reveal/Fade"
+import data from "../yourdata"
 
-const Header = ({ siteTitle, site }) => {
-  const switchHeaders = site => {
-    switch (site) {
-      case "payment":
-        return <PaymentHeader />
-      case "travel":
-        return <TravelHeader />
-      default:
-        return "test"
-    }
-  }
-  return <header>{switchHeaders(site)}</header>
-}
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
+const Header = () => {
+  return (
+    <div className="section" id="home">
+      <div className="container">
+        <div className="header-wrapper">
+          <Fade bottom>
+            <h2>
+              Hi, I'm {data.name}{" "}
+            </h2>
+          </Fade>
+          <Fade bottom cascade>
+            <div className="heading-wrapper">
+              <h1>
+                {data.headerTagline[0]
+                  ? data.headerTagline[0]
+                  : "Building digital"}
+              </h1>
+              <h1>
+                {" "}
+                {data.headerTagline[1]
+                  ? data.headerTagline[1]
+                  : "products, brands"}
+              </h1>
+              <h1>
+                {" "}
+                {data.headerTagline[2]
+                  ? data.headerTagline[2]
+                  : "and experience"}
+              </h1>
+            </div>
+          </Fade>
+          <Fade bottom>
+            <p>{data.headerParagraph}</p>
+          </Fade>
+          <Fade bottom>
+            <a
+              href={`mailto:${
+                data.contactEmail ? data.contactEmail : "hello@chetanverma.com"
+              }`}
+              className="primary-btn"
+            >
+              Contact Me
+            </a>
+          </Fade>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default Header
